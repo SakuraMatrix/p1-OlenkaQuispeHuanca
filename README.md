@@ -5,7 +5,7 @@ Simple application that connects borrowers to investors directly without the nee
   * Lender can create an account 
   * Lender can check borrower's profile
   * Lender can send an offer to the borrower
-  * Lender can see all the loan application available 
+  * Lender can see all the loan applications available 
 * Borrower: 
   * Borrower can create an account 
   * Borrower can check lender's profile
