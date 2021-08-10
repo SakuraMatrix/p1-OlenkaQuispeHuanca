@@ -45,6 +45,13 @@
             <version>1.2.3</version>
             <!--            <scope>test</scope>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.projectreactor.netty/reactor-netty -->
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+
     </dependencies>
 
 
