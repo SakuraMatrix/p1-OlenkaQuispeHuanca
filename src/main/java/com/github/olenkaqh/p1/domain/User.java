@@ -6,15 +6,14 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class User {
-
+        private int creditScore;
+        private UUID accountID;
         private String name;
         private LocalDate dateOfBirth;
-        private int age;
+//        private int age;
         private String email;
         private String phoneNumber;
         private String occupation;
-        private int creditScore;
-        private UUID accountID;
 //        private Account useAccount; //account id to connect to account
         private double balance;
 
@@ -24,7 +23,6 @@ public class User {
         public User(String name, LocalDate dateOfBirth, int age, String email, String phoneNumber, String occupation, int creditScore, UUID accountID, double balance) {
                 this.name = name;
                 this.dateOfBirth = dateOfBirth;
-                this.age = age;
                 this.email = email;
                 this.phoneNumber = phoneNumber;
                 this.occupation = occupation;
@@ -34,6 +32,14 @@ public class User {
         }
 
         //getters and setters
+        public UUID getAccountID() {
+                return accountID;
+        }
+
+        public void setAccountID(UUID accountID) {
+                this.accountID = accountID;
+        }
+
         public String getName() {
                 return name;
         }
@@ -48,14 +54,6 @@ public class User {
 
         public void setDateOfBirth(LocalDate dateOfBirth) {
                 this.dateOfBirth = dateOfBirth;
-        }
-
-        public int getAge() {
-                return age;
-        }
-
-        public void setAge(int age) {
-                this.age = age;
         }
 
         public String getEmail() {
@@ -88,14 +86,6 @@ public class User {
 
         public void setCreditScore(int creditScore) {
                 this.creditScore = creditScore;
-        }
-
-        public UUID getAccountID() {
-                return accountID;
-        }
-
-        public void setAccountID(UUID accountID) {
-                this.accountID = accountID;
         }
 
         public double getBalance() {

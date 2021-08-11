@@ -7,7 +7,7 @@ public class Loan {
     UUID loanID;
     double loanAmount;
     double interestRate;
-    int loanDuration;
+    String loanDuration;
     UUID lenderId; //lender information maybe switch to user id later
     UUID borrowerId; //borrower information maybe switch to user id later
 //    String status;
@@ -15,7 +15,7 @@ public class Loan {
     //constructors
     public Loan(){}
 
-    public Loan(UUID loanID, double loanAmount, double interestRate, int loanDuration, UUID lenderId, UUID borrowerId) {
+    public Loan(UUID loanID, double loanAmount, double interestRate, String loanDuration, UUID lenderId, UUID borrowerId) {
         this.loanID = loanID;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
@@ -49,11 +49,11 @@ public class Loan {
         this.interestRate = interestRate;
     }
 
-    public int getLoanDuration() {
+    public String getLoanDuration() {
         return loanDuration;
     }
 
-    public void setLoanDuration(int loanDuration) {
+    public void setLoanDuration(String loanDuration) {
         this.loanDuration = loanDuration;
     }
 
