@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS user(
     credit_score int,
     balance double,
     PRIMARY KEY(account_id);
-)
+);
