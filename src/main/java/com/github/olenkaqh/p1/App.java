@@ -1,3 +1,5 @@
+package com.github.olenkaqh.p1;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import java.net.URISyntaxException;

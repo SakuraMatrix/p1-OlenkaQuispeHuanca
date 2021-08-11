@@ -1,3 +1,6 @@
+package com.github.olenkaqh.p1;
+
+import com.github.olenkaqh.p1.App;
 import reactor.netty.DisposableServer;
 import reactor.netty.http.server.HttpServer;
 
