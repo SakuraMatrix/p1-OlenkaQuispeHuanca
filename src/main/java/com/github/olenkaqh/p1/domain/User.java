@@ -1,7 +1,5 @@
 package com.github.olenkaqh.p1.domain;
 
-import com.github.olenkaqh.p1.domain.Account;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
