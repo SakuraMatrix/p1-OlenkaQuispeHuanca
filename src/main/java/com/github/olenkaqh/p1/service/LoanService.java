@@ -2,9 +2,10 @@ package com.github.olenkaqh.p1.service;
 
 import com.github.olenkaqh.p1.domain.Loan;
 import com.github.olenkaqh.p1.repository.LoanRepository;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+@Service
 public class LoanService {
     private LoanRepository loanRepository;
 

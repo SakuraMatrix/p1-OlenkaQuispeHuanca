@@ -1,97 +1,29 @@
 package com.github.olenkaqh.p1;
 
-import com.datastax.oss.driver.api.core.CqlSession;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.olenkaqh.p1.domain.Loan;
 import com.github.olenkaqh.p1.domain.User;
-import com.github.olenkaqh.p1.repository.LoanRepository;
-import com.github.olenkaqh.p1.repository.UserRepository;
-import com.github.olenkaqh.p1.service.LoanService;
-import com.github.olenkaqh.p1.service.UserService;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import reactor.netty.DisposableServer;
-import reactor.netty.http.server.HttpServer;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Objects;
+
 
 public class App {
+    static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("Application starting...");
-        System.out.println("Hello World!");
-        DatabaseConnection cassandraDB = new DatabaseConnection();
-        cassandraDB.connect();
-        CqlSession session = cassandraDB.getSession();
-//        cassandraDB.close();
-//        ServerConnection server = new ServerConnection();
-//        server.Connect();
-        Path fileHTML = Paths.get(Objects.requireNonNull(App.class.getResource("/test.html")).toURI());
-        Path indexHTML = Paths.get(Objects.requireNonNull(App.class.getResource("/index.html")).toURI());
-        Path loanApplicationHTML = Paths.get(Objects.requireNonNull(App.class.getResource("/loanForm.html")).toURI());
-
-        UserRepository  userRepository = new UserRepository(session);
-        UserService userService = new UserService(userRepository);
-        LoanRepository loanRepository = new LoanRepository(session);
-        LoanService loanService = new LoanService(loanRepository);
-
-        DisposableServer server = HttpServer.create()
-                .port(8080)
-                .route(routes ->
-                                routes.get("/test",(request, response) ->
-                                                response.sendFile(fileHTML))
-
-                                        .get("/users", (request, response) ->
-                                                response.send(userService.getAll().map(App::toByteBuf)
-                                                        .log("http server")))
-                                        .post("/users",(request,response) ->
-                                                response.send(request.receive().asString()
-                                                        .map(App::parseUser)
-                                                        .map(userService::addUser)
-                                                        .map(App::toByteBuf)
-                                                        .log("http-server")))
-                                        .get("/users/{param}" , (request, response) ->
-                                                response.send(userService.get(request.param("param")).map(App::toByteBuf)
-                                                        .log("http server")))
-//                                .get(("/users/{param}/loans" ), (request, response) ->
-//                                        response.send(loanService.getBorrowerLoans(request.param("param")).map(App::toByteBuf)
-//                                                .log("http server")))
-                                        .get("/loans", (request, response) ->
-                                                response.send(loanService.getAll().map(App::toByteBuf)
-                                                        .log("http server")))
-                                        .post("/loans", (request, response)->
-                                                response.send(request.receive().asString()
-                                                        .map(App::parseLoan)
-                                                        .map(loanService::addLoan)
-                                                        .map(App::toByteBuf)))
-                                        .get(("/loans/{param}" ), (request, response) ->
-                                                response.send(loanService.get(request.param("param")).map(App::toByteBuf)
-                                                        .log("http server")))
-                                        .get("/", (request, response) ->
-                                                response.sendFile(indexHTML))
-                                        .get("/application", (request, response) ->
-                                                response.sendFile(loanApplicationHTML))
-
-
-
-                )
-                .bindNow();
-
-        server.onDispose()
-                .block();
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        applicationContext.getBean(DisposableServer.class).onDispose().block();
     }
-    static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     static ByteBuf toByteBuf(Object o){
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {

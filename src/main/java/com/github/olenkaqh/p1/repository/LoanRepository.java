@@ -3,10 +3,12 @@ package com.github.olenkaqh.p1.repository;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.github.olenkaqh.p1.domain.Loan;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.sql.SQLOutput;
+@Repository
 public class LoanRepository {
     private CqlSession session;
     //constructor
