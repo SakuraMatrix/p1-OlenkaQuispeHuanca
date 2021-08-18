@@ -27,4 +27,7 @@ public class LoanService {
     public Loan addLoan(Loan loan) {
         return loanRepository.create(loan);
     }
+    public Mono<Loan> remove(String id) {
+        return loanRepository.delete(Integer.parseInt(id));
+    }
 }

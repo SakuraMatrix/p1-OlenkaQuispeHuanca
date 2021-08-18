@@ -16,13 +16,12 @@ import java.io.IOException;
 
 public class App {
     static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
+    static Logger logger = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
-        Logger logger = LoggerFactory.getLogger(App.class);
+//        Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("Application starting...");
-
+        logger.info("Starting Server and database connection");
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        logger.info("Starting Server");
         applicationContext.getBean(DisposableServer.class).onDispose().block();
     }
 

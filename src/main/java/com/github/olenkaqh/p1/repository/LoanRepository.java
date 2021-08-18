@@ -60,5 +60,11 @@ public class LoanRepository {
 
         return loan;
     }
+    //remove a loan when balance is 0
+    public Mono<Loan> delete(int id){
+        Mono.from(session.executeReactive("DELETE FROM p2plender.loans WHERE loan_id = ? IF loan_amount = 0", id))
+                .subscribe();
+        return  this.get(id);
+    }
 
 }

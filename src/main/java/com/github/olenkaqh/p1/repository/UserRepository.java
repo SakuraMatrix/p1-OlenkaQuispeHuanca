@@ -44,8 +44,6 @@ public class UserRepository {
 
     //delete user
     public Mono<User> delete(int id ) {
-
-        this.get(id);
       Mono.from(session.executeReactive("DELETE FROM p2plender.users WHERE account_id = ? IF balance = 0", id))
            .subscribe();
       return this.get(id);
