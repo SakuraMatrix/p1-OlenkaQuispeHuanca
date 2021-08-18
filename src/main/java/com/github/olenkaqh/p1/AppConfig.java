@@ -51,9 +51,9 @@ public class AppConfig {
                                         .get("/users/{param}" , (request, response) ->
                                                 response.send(userService.get(request.param("param")).map(App::toByteBuf)
                                                         .log("http server")))
-//                                .get(("/users/{param}/loans" ), (request, response) ->
-//                                        response.send(loanService.getBorrowerLoans(request.param("param")).map(App::toByteBuf)
-//                                                .log("http server")))
+                                        .get(("/users/{param}/loans" ), (request, response) ->
+                                                response.send(loanService.getUserLoans(request.param("param")).map(App::toByteBuf)
+                                                        .log("http server")))
                                         .get("/loans", (request, response) ->
                                                 response.send(loanService.getAll().map(App::toByteBuf)
                                                         .log("http server")))

@@ -17,9 +17,9 @@ public class LoanService {
         return loanRepository.getAll();
     }
 
-//    public Flux<Loan> getBorrowerLoans(String id) {
-//        return loanRepository.getBorrowerLoans(Integer.parseInt(id));
-//    }
+    public Flux<Loan> getUserLoans(String id) {
+        return loanRepository.getUserLoans(Integer.parseInt(id));
+    }
 
     public Mono<Loan> get(String id) {
         return loanRepository.get(Integer.parseInt(id));
