@@ -39,7 +39,7 @@ public class LoanRepository {
                 row.getString("loan_duration")));
     }
 
-        //get loans specific to user
+        //get loans specific to borrower
     public Flux<Loan> getUserLoans(int id){
 
             return Flux.from(session.executeReactive("SELECT * FROM p2plender.loans WHERE borrower_id = ? ALLOW FILTERING", id))
