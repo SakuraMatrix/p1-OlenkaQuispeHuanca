@@ -19,7 +19,7 @@ public class LoanRepository {
 
     //get all loans
     public Flux<Loan> getAll(){
-        return Flux.from(session.executeReactive("SELECT * FROM p2plender.loan")).map(row -> new Loan(row.getInt("loan_id"),
+        return Flux.from(session.executeReactive("SELECT * FROM p2plender.loans")).map(row -> new Loan(row.getInt("loan_id"),
                 row.getInt("lender_id"),
                 row.getInt("borrower_id"),
                 row.getDouble("interest_rate"),
@@ -30,7 +30,7 @@ public class LoanRepository {
     //get a single loan from loans
     public Mono<Loan> get(int id){
 //        System.out.println("id: " + id);
-        return Mono.from(session.executeReactive("SELECT * FROM p2plender.loan WHERE loan_id = " + id ))
+        return Mono.from(session.executeReactive("SELECT * FROM p2plender.loans WHERE loan_id = " + id ))
                 .map(row -> new Loan(row.getInt("loan_id"),
                 row.getInt("lender_id"),
                 row.getInt("borrower_id"),
@@ -42,7 +42,7 @@ public class LoanRepository {
         //get loans specific to user
     public Flux<Loan> getUserLoans(int id){
 
-            return Flux.from(session.executeReactive("SELECT * FROM p2plender.loan WHERE borrower_id = ? ALLOW FILTERING", id))
+            return Flux.from(session.executeReactive("SELECT * FROM p2plender.loans WHERE borrower_id = ? ALLOW FILTERING", id))
                 .map(row -> new Loan(row.getInt("loan_id"),
                 row.getInt("lender_id"),
                 row.getInt("borrower_id"),
@@ -53,7 +53,7 @@ public class LoanRepository {
     }
     //create a new loan
     public Loan create(Loan loan){
-        SimpleStatement stm = SimpleStatement.builder("INSERT INTO p2plender.loan (loan_id, loan_amount, interest_rate, loan_duration, lender_id,borrower_id) VALUES (?,?,?,?,?,?)")
+        SimpleStatement stm = SimpleStatement.builder("INSERT INTO p2plender.loans (loan_id, loan_amount, interest_rate, loan_duration, lender_id,borrower_id) VALUES (?,?,?,?,?,?)")
                 .addPositionalValues(loan.getLoanID(),loan.getLoanAmount(),loan.getInterestRate(),loan.getLoanDuration(),loan.getLenderId(),loan.getBorrowerId())
                 .build();
         Flux.from(session.executeReactive(stm)).subscribe();
