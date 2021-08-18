@@ -20,7 +20,9 @@ public class App {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("Application starting...");
+
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        logger.info("Starting Server");
         applicationContext.getBean(DisposableServer.class).onDispose().block();
     }
 
