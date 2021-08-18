@@ -1,35 +1,63 @@
 package com.github.olenkaqh.p1.domain;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Loan {
 
-    UUID loanID;
-    double loanAmount;
+    int loanID;
+    int lenderId; //lender information maybe switch to user id later
+    int borrowerId; //borrower information maybe switch to user id later
     double interestRate;
+    double loanAmount;
     String loanDuration;
-    UUID lenderId; //lender information maybe switch to user id later
-    UUID borrowerId; //borrower information maybe switch to user id later
+
 //    String status;
 
     //constructors
     public Loan(){}
 
-    public Loan(UUID loanID, double loanAmount, double interestRate, String loanDuration, UUID lenderId, UUID borrowerId) {
+    public Loan(int loanID, int lenderId, int borrowerId, double interestRate,double loanAmount, String loanDuration) {
         this.loanID = loanID;
+        this.lenderId = lenderId;
+        this.borrowerId = borrowerId;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
         this.loanDuration = loanDuration;
-        this.lenderId = lenderId;
-        this.borrowerId = borrowerId;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "loanID=" + loanID +
+                ", lenderId=" + lenderId +
+                ", borrowerId=" + borrowerId +
+                ", interestRate=" + interestRate +
+                ", loanAmount=" + loanAmount +
+                ", loanDuration='" + loanDuration + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Loan loan = (Loan) o;
+        return loanID == loan.loanID && lenderId == loan.lenderId && borrowerId == loan.borrowerId && Double.compare(loan.interestRate, interestRate) == 0 && Double.compare(loan.loanAmount, loanAmount) == 0 && Objects.equals(loanDuration, loan.loanDuration);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loanID, lenderId, borrowerId, interestRate, loanAmount, loanDuration);
     }
 
     //getters and setters
-    public UUID getLoanID() {
+    public int getLoanID() {
         return loanID;
     }
 
-    public void setLoanID(UUID loanID) {
+    public void setLoanID(int loanID) {
         this.loanID = loanID;
     }
 
@@ -57,19 +85,19 @@ public class Loan {
         this.loanDuration = loanDuration;
     }
 
-    public UUID getLenderId() {
+    public int getLenderId() {
         return lenderId;
     }
 
-    public void setLenderId(UUID lenderId) {
+    public void setLenderId(int lenderId) {
         this.lenderId = lenderId;
     }
 
-    public UUID getBorrowerId() {
+    public int getBorrowerId() {
         return borrowerId;
     }
 
-    public void setBorrowerId(UUID borrowerId) {
+    public void setBorrowerId(int borrowerId) {
         this.borrowerId = borrowerId;
     }
 }
