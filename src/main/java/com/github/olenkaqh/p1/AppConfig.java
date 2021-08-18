@@ -51,9 +51,12 @@ public class AppConfig {
                                         .get("/users/{param}" , (request, response) ->
                                                 response.send(userService.get(request.param("param")).map(App::toByteBuf)
                                                         .log("http server")))
-                                        .get(("/users/{param}/loans" ), (request, response) ->
+                                        .get("/users/{param}/loans" , (request, response) ->
                                                 response.send(loanService.getUserLoans(request.param("param")).map(App::toByteBuf)
                                                         .log("http server")))
+                                        .delete("/users/{param}/delete", (request, response) ->
+                                                response.send(userService.remove(request.param("param")).map(App::toByteBuf)
+                                                                .log("http server")))
                                         .get("/loans", (request, response) ->
                                                 response.send(loanService.getAll().map(App::toByteBuf)
                                                         .log("http server")))
@@ -62,7 +65,7 @@ public class AppConfig {
                                                         .map(App::parseLoan)
                                                         .map(loanService::addLoan)
                                                         .map(App::toByteBuf)))
-                                        .get(("/loans/{param}" ), (request, response) ->
+                                        .get("/loans/{param}" , (request, response) ->
                                                 response.send(loanService.get(request.param("param")).map(App::toByteBuf)
                                                         .log("http server")))
                                         .get("/", (request, response) ->

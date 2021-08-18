@@ -31,7 +31,6 @@ public class UserRepository {
     }
 
     //create a new user
-
     public User create(User user){
         SimpleStatement statement = SimpleStatement.builder("INSERT INTO p2plender.users (account_id, account_type, name, date_of_birth, email, phone_num, occupation, credit_score, balance) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)")
                 .addPositionalValues(user.getAccountID(),user.getAccountType(), user.getName(), user.getDateOfBirth(), user.getEmail(), user.getPhoneNumber(), user.getOccupation(), user.getCreditScore(), user.getBalance())
@@ -41,6 +40,15 @@ public class UserRepository {
 //                user.getAccountID() + user.getAccountType() +  user.getName() + user.getDateOfBirth()+user.getEmail()+ user.getPhoneNumber()+
 //                user.getOccupation()+ user.getCreditScore()+ user.getBalance());
         return user;
+    }
+
+    //delete user
+    public Mono<User> delete(int id ) {
+
+        this.get(id);
+      Mono.from(session.executeReactive("DELETE FROM p2plender.users WHERE account_id = ? IF balance = 0", id))
+           .subscribe();
+      return this.get(id);
     }
 
 }

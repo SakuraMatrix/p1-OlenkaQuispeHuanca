@@ -17,8 +17,8 @@ public class UserService {
     public Mono<User> get(String id){
         return userRepository.get(Integer.parseInt(id));
     }
-
     public User addUser(User user) {
         return userRepository.create(user);
     }
+    public Mono<User> remove(String id) { return userRepository.delete(Integer.parseInt(id));}
 }
