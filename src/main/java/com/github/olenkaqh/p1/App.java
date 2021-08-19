@@ -50,9 +50,9 @@ public class App {
             String phoneNumber = params[5].split("=")[1];
             String occupation = params[6].split("=")[1];
             int creditScore = Integer.parseInt(params[7].split("=")[1]);
-            double balance = Double.parseDouble(params[8].split("=")[1]);
+
             //creates new user object
-            user = new User(accountID, accountType, name, dateOfBirth, email, phoneNumber,occupation, creditScore, balance);
+            user = new User(accountID,accountType, name, dateOfBirth, email, phoneNumber,occupation, creditScore);
         }
         return user;
     }

@@ -28,6 +28,17 @@ public class User {
                 this.creditScore = creditScore;
                 this.balance = balance;
         }
+        public User(int accountID, String accountType, String name, String dateOfBirth, String email, String phoneNumber, String occupation, int creditScore) {
+                this.accountID = accountID;
+                this.accountType = accountType;
+                this.name = name;
+                this.dateOfBirth = dateOfBirth;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+                this.occupation = occupation;
+                this.creditScore = creditScore;
+                this.balance = 0;
+        }
 
         @Override
         public String toString() {
