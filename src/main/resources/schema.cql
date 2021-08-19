@@ -29,7 +29,9 @@ INSERT INTO p2plender.loans(loan_id, loan_amount, interest_rate, loan_duration, 
 INSERT INTO p2plender.loans(loan_id, loan_amount, interest_rate, loan_duration, lender_id,borrower_id)
     VALUES (2, 10000, 6.5, '5 years', 4, 2 );
 INSERT INTO p2plender.loans(loan_id, loan_amount, interest_rate, loan_duration, lender_id,borrower_id)
-    VALUES (3, 5000, 5, '1 years', 4, 3 );
+    VALUES (3, 5000, 5, '1 year', 4, 3 );
+INSERT INTO p2plender.loans(loan_id, loan_amount, interest_rate, loan_duration, lender_id,borrower_id)
+    VALUES (4, 0, 7, '1 year', 4, 5 );
 --    users
  INSERT INTO p2plender.users(account_id, account_type, name, date_of_birth, email, phone_num, occupation, credit_score, balance)
     VALUES (1,'Borrower','John Smith','1993-01-01', 'john.smith@gmail.com','1234567890', 'Teacher',690,2000 );
@@ -39,3 +41,5 @@ INSERT INTO p2plender.loans(loan_id, loan_amount, interest_rate, loan_duration, 
     VALUES (3,'Borrower','Susan King','1995-06-11', 'susan.king@gmail.com','9876543210', 'Bartender',500,5000 );
  INSERT INTO p2plender.users(account_id, account_type, name, date_of_birth, email, phone_num, occupation, credit_score, balance)
     VALUES (4,'Lender','Marcus Gibson','1972-12-03', 'marcus.gibson@gmail.com','6789012345', 'Investor',810,0 );
+ INSERT INTO p2plender.users(account_id, account_type, name, date_of_birth, email, phone_num, occupation, credit_score, balance)
+    VALUES (5,'Borrower','John Doe','1972-12-03', 'john.doe@gmail.com','6788882345', 'Electrician',520,0 );
