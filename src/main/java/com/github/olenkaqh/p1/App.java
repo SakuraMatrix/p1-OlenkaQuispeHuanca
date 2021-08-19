@@ -18,9 +18,9 @@ public class App {
     static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     static Logger logger = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
-//        Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("Application starting...");
         logger.info("Starting Server and database connection");
+
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         applicationContext.getBean(DisposableServer.class).onDispose().block();
     }
@@ -35,6 +35,7 @@ public class App {
         return ByteBufAllocator.DEFAULT.buffer().writeBytes(out.toByteArray());
     }
 
+    // converts string into a user object
     static User parseUser (String str) {
         User user = null;
         try {
@@ -55,6 +56,8 @@ public class App {
         }
         return user;
     }
+
+    //converts string into a loan object
     static Loan parseLoan (String str) {
         Loan loan = null;
         try {

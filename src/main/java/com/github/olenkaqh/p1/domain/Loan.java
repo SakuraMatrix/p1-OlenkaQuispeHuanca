@@ -1,22 +1,20 @@
 package com.github.olenkaqh.p1.domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Loan {
 
     int loanID;
-    int lenderId; //lender information maybe switch to user id later
-    int borrowerId; //borrower information maybe switch to user id later
+    int lenderId;
+    int borrowerId;
     double interestRate;
     double loanAmount;
     String loanDuration;
 
-//    String status;
-
-    //constructors
+    //No args constructor
     public Loan(){}
 
+    //Constructor
     public Loan(int loanID, int lenderId, int borrowerId, double interestRate,double loanAmount, String loanDuration) {
         this.loanID = loanID;
         this.lenderId = lenderId;
@@ -24,7 +22,6 @@ public class Loan {
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
         this.loanDuration = loanDuration;
-
     }
 
     @Override

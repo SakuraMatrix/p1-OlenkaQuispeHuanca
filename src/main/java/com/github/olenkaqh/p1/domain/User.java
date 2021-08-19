@@ -1,26 +1,22 @@
 package com.github.olenkaqh.p1.domain;
 
-import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 public class User {
-
         private int accountID;
         private String accountType;
         private String name;
         private String dateOfBirth;
-        //        private int age;
         private String email;
         private String phoneNumber;
         private String occupation;
         private int creditScore;
-        //        private Account useAccount; //account id to connect to account
         private double balance;
 
-        //constructors
+        //No args constructor
         public User(){}
 
+        //Constructor
         public User(int accountID, String accountType, String name, String dateOfBirth, String email, String phoneNumber, String occupation, int creditScore, double balance) {
                 this.accountID = accountID;
                 this.accountType = accountType;

@@ -5,9 +5,11 @@ import com.github.olenkaqh.p1.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
 @Service
 public class UserService {
     UserRepository userRepository;
+
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }

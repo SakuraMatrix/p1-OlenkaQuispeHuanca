@@ -12,15 +12,12 @@ public class LoanService {
     public LoanService(LoanRepository loanRepository){
         this.loanRepository = loanRepository;
     }
-
     public Flux<Loan> getAll() {
         return loanRepository.getAll();
     }
-
     public Flux<Loan> getUserLoans(String id) {
         return loanRepository.getUserLoans(Integer.parseInt(id));
     }
-
     public Mono<Loan> get(String id) {
         return loanRepository.get(Integer.parseInt(id));
     }

@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Registration</title>
 </head>
 <body>
-
-<form action="/users" method="post">
-    account id: <input name="accountID" type="number"/><br/>
-    account type: <input name="accountType" type="text"/><br/>
-    name: <input name="name" type="text" /><br/>
-    date of birth: <input name="dateOfBirth" type="text" /><br/>
-    email: <input name="email" type="text" /><br/>
-    phone number: <input name="phoneNumber" type="text" /><br/>
-    occupation: <input name="occupation" type="text" /><br/>
-    credit score: <input name="creditScore" type="number" /><br/>
-    balance: <input name="balance" type="number" /><br/>
-    <button type="submit">Send</button>
-</form>
+    <form action="/users" method="post">
+        <label>Account ID:</label><br>
+        <input name="accountID" type="number"/><br/>
+        <label>Account type:</label><br>
+         <input name="accountType" type="text"/><br/>
+        <label>Name:</label><br>
+        <input name="name" type="text" /><br/>
+        <label>DOB:</label><br>
+        <input name="dateOfBirth" type="date" /><br/>
+        <label>Email</label><br>
+        <input name="email" type="email" /><br/>
+        <label>Phone number:</label><br>
+         <input name="phoneNumber" type="tel" /><br/>
+        <label>Occupation</label><br>
+        <input name="occupation" type="text" /><br/>
+        <label>Credit score</label><br>
+        <input name="creditScore" type="number" /><br/>
+        <label>Balance</label><br>
+        <input name="balance" type="number" /><br/>
+        <button type="submit">Send</button>
+    </form>
 
 </body>
 

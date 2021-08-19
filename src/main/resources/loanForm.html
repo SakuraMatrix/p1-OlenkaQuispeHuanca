@@ -2,18 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>loan form</title>
+    <title>loan Form</title>
 </head>
 <body>
 
-<form action="/loans" method="post">
-    loan id: <input name="loanID" type="number"/><br/>
-    lender id: <input name="lenderID" type="number"/><br/>
-    borrower id: <input name="borrowerID" type="number" /><br/>
-    interest rate: <input name="interestRate" type="number" /><br/>
-    loan amount:<input name="loanAmount" type="number" /><br/>
-    loan duration <input name="loanDuration" type="text" /><br/>
-    <button type="submit">send</button>
-</form>
+<!--    <form action="/loans" method="post">-->
+<!--        loan id: <input name="loanID" type="number"/><br/>-->
+<!--        lender id: <input name="lenderID" type="number"/><br/>-->
+<!--        borrower id: <input name="borrowerID" type="number" /><br/>-->
+<!--        interest rate: <input name="interestRate" type="number" /><br/>-->
+<!--        loan amount:<input name="loanAmount" type="number" /><br/>-->
+<!--        loan duration <input name="loanDuration" type="text" /><br/>-->
+<!--        <button type="submit">send</button>-->
+<!--    </form>-->
+    <form action="/loans" method="post">
+        <label>Loan ID:</label><br>
+        <input name="loanID" type="number"/><br/>
+        <label>Lender ID:</label><br>
+        <input name="lenderID" type="number"/><br/>
+        <label>Borrower ID:</label><br>
+        <input name="borrowerID" type="number" /><br/>
+        <label>Interest rate: </label><br>
+        <input name="interestRate" type="number" /><br/>
+        <label>Amount:</label><br>
+        <input name="loanAmount" type="number" /><br/>
+        <label>Loan Period:</label><br>
+        <input name="loanDuration" type="text" /><br/>
+        <button type="submit">send</button>
+    </form>
 </body>
 </html>
