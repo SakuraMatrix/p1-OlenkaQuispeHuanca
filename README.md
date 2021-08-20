@@ -19,12 +19,12 @@ Simple application that connects borrowers to investors directly without the nee
 * Sprint 
 * Cassandra DB
 * Reactor Netty
-##Usage
-###Run 
+## Usage
+### Run 
 To run the program on the command line:
 `mvn exec:java -Dexec.mainClass=App`
 
-##RESTful API endpoints
+## RESTful API endpoints
 * GET `/`: Retrieves registration form 
 * GET `/users`: Retrieves all the users 
 * POST `/users`: Adds a new user to the database
@@ -36,7 +36,7 @@ To run the program on the command line:
 * GET `/loans/{id}`: Retrieves a loan information based on the given loan ID 
 * DELETE `/loans/{id}`: Removes a loan from the database based on the given loan ID if the loan balance is 0
 * GET `/loan-application`: Retrieves loan application form on the browser
-##Future Work
+## Future Work
 * Work on testing 
 * Set endpoints to update user information
 * Improve current endpoints
