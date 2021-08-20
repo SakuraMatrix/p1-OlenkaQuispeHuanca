@@ -1,16 +1,21 @@
 <configuration>
-<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
-<!--        <File>logger.log</File>-->
-<!--        <encoder>-->
-<!--             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
-<!--        </encoder>-->
-<!--    </appender>-->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <File>logs/app.log</File>
         <encoder>
-            <Pattern>%d %p %t %c - %m%n</Pattern>
+             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <encoder>
+                <Pattern>%d %p %t %c - %m%n</Pattern>
+            </encoder>
+        </layout>
+    </appender>
+
     <root level="debug">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
     </root>
 </configuration>
