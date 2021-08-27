@@ -1,29 +1,34 @@
 # Project 1: Peer-to-Peer lending application 
-Simple application that connects borrowers to investors directly without the need of a bank middleman.
+Restful API for a peer to peer lending application that connects borrowers to investors directly without the need of a bank middleman.
+## Technologies
+* Java 8+
+* Maven 
+* slf4j 
+* Spring Framework
+* Cassandra DB
+* Reactor Netty
 ## User stories
 * Lender:
   * Lender can create an account 
   * Lender can check borrower's profile
-  * Lender can send an offer to the borrower
   * Lender can see all the loan applications available 
 * Borrower: 
   * Borrower can create an account 
   * Borrower can check lender's profile
   * Borrower can create a loan application
-  * Borrower can send a counteroffer to the lender
-  * Borrower can see all the offers for their loan application
-## Technologies
-* Java 8+
-* Maven 
-* slf4j 
-* Sprint 
-* Cassandra DB
-* Reactor Netty
+## Getting Started
+To start clone the repository
+`git clone https://github.com/SakuraMatrix/p1-OlenkaQuispeHuanca.git`
 ## Usage
+### Compile 
+To compile the program use:
+`mvn compile`
 ### Run 
 To run the program on the command line:
 `mvn exec:java -Dexec.mainClass=App`
-
+### Clean
+To clean up artifacts created by prior builds:  
+`mvn clean`
 ## RESTful API endpoints
 * GET `/`: Retrieves registration form 
 * GET `/users`: Retrieves all the users 
